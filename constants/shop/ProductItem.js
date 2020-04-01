@@ -16,18 +16,20 @@ const ProductItem = props => {
     letTouchableCmp = TouchableOpacity
 
     if (Platform.OS === 'Android' && Platform.Version >= 21) {
-        TouchableCmp = TouchablNativeFeedback;
+        TouchableCmp = TouchableNativeFeedback;
     }
 
     return (
-      <View style={styles.product}>
-       <TouchableCmp onPress={props.onViewDetail} useForeground>
-        <View style= {styles.imageContainer}>  
-         <Image style={styles.image} source= {{uri: props.image}}/>
-        </View>
+     <View style={styles.product}>
+       <View style={styles.touchable}> 
+        <TouchableCmp onPress={props.onViewDetail} useForeground>
+         <View>
+          <View style= {styles.imageContainer}>  
+           <Image style={styles.image} source= {{uri: props.image}}/>
+         </View>
         <View style={styles.details}>
-        <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+          <Text style={styles.title}>{props.title}</Text>
+          <Text style={styles.price}>${props.price.toFixed(2)}</Text>
         </View>
         <View style={styles.actions}>
          <Button 
@@ -40,9 +42,11 @@ const ProductItem = props => {
            title="To Cart" 
            onPress={props.onAddToCart} 
          />
+          </View>  
         </View>
        </TouchableCmp> 
-        </View>
+      </View>
+    </View>
       
    );
 };
@@ -58,8 +62,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: 300,
         margin: 20,
+    },
+    touchable: {
+        borderRadius: 10,  
         overflow: 'hidden'
     },
+
     imageContainer: {
         width: '100%',
         height: '60%',
