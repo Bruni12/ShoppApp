@@ -1,11 +1,27 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Button} from 'react-native';
+import {
+    View, 
+    Text, 
+    Image, 
+    StyleSheet, 
+    Button, 
+    TouchableOpacity,
+    TouchableNativeFeedback,
+    Platform
+} from 'react-native';
 
 import Colors from '../../constants/Colors';
 
 const ProductItem = props => {
-    return ( 
+    letTouchableCmp = TouchableOpacity
+
+    if (Platform.OS === 'Android' && Platform.Version >= 21) {
+        TouchableCmp = TouchablNativeFeedback;
+    }
+
+    return (
       <View style={styles.product}>
+       <TouchableCmp onPress={props.onViewDetail} useForeground>
         <View style= {styles.imageContainer}>  
          <Image style={styles.image} source= {{uri: props.image}}/>
         </View>
@@ -24,8 +40,10 @@ const ProductItem = props => {
            title="To Cart" 
            onPress={props.onAddToCart} 
          />
-       </View>
-     </View>
+        </View>
+       </TouchableCmp> 
+        </View>
+      
    );
 };
 
@@ -39,7 +57,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
         height: 300,
-        margin: 20
+        margin: 20,
+        overflow: 'hidden'
     },
     imageContainer: {
         width: '100%',
