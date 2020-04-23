@@ -1,16 +1,44 @@
 import React from 'react';
-import { Flatlist, Platform } from 'react-native';
+import { Flatlist, Button, Platform } from 'react-native';
 import { useSelector } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import HeaderButton from '../../components/UI/HeaderButton';
 import ProductItem from '../components/shop/ProductItem';
+import Colors from '../../constants/Colors';
 
 const UserProductsScreen = props => {
     const userProducts = useSelector(state => state.products.userProducts);
 
-    return <Flatlist data={userProducts} keyExtractor={item => item.id} renderItem={itemData => <ProductItem image={itemData.item.imageUrl} title={itemData.item.title} price={itemData.item.price} onViewDetail={() =>{}} onAddToCart={()=> {}}/>} />;
-};
+    return (
+    <Flatlist
+     data={userProducts}
+     keyExtractor={item => item.id}
+     renderItem={itemData => (
+       <ProductItem 
+         image={itemData.item.imageUrl}
+         title={itemData.item.title}
+         price={itemData.item.price}
+         onSelect={() => {}}
+         >
+              <Button 
+           color={Colors.primary}
+           title="Edit" 
+           onPress={() => {
+           
+          }}
+          />
+         <Button 
+           color={Colors.primary} 
+           title="Delete" 
+           onPress={() => {
+            
+          }} 
+         /> 
+         </ProductItem>
+       )} 
+     />
+   );
 
 UserProductsScreen.navigationOptons = navData => {
     return {headerTitle: 'Your Products',
