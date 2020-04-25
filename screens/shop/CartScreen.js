@@ -20,8 +20,8 @@ const CartScreen = props => {
         sum: state.cart.items[key].sum
       });
     }
-    return transformedCartItems.sort((a, b ) =>
-     a.productId > b.productId ? 1 : -1
+    return transformedCartItems.sort((a, b) =>
+      a.productId > b.productId ? 1 : -1
     );
   });
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const CartScreen = props => {
           title="Order Now"
           disabled={cartItems.length === 0}
           onPress={() => {
-              dispatch(ordersActions.addOrder(cartItems, cartTotalAmount));
+            dispatch(ordersActions.addOrder(cartItems, cartTotalAmount));
           }}
         />
       </View>
@@ -52,7 +52,7 @@ const CartScreen = props => {
             amount={itemData.item.sum}
             deletable
             onRemove={() => {
-                dispatch(cartActions.removeFromCart(itemData.item.productId));
+              dispatch(cartActions.removeFromCart(itemData.item.productId));
             }}
           />
         )}

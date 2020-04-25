@@ -22,13 +22,13 @@ const CartItem = props => {
             onPress={props.onRemove}
             style={styles.deleteButton}
           >
-          <Ionicons
-            name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
-            size={23}
-            color="red"
-          />
-         </TouchableOpacity>
-       )}
+            <Ionicons
+              name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
+              size={23}
+              color="red"
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
