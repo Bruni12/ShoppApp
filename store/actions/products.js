@@ -19,9 +19,9 @@ export const CreateProduct = (title, description, imageUrl, price) => {
   };
 };
 
-export const CreateProduct = (id, title, description, imageUrl ) => {
+export const updateProduct = (id, title, description, imageUrl ) => {
   return { 
-    type: CREATE_PRODUCT, 
+    type: UPDATE_PRODUCT, 
     pid: id,
     productData: {
       title,
