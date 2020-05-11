@@ -1,6 +1,10 @@
 import PRODUCTS from '../../data/dummy-data';
-import { DELETE_PRODUCT, CREATE_PRODUCT, UPDATE_PRODUCT } from '../actions/products';
-import { setLightEstimationEnabled } from 'expo/build/AR';
+import { 
+  DELETE_PRODUCT,
+  CREATE_PRODUCT, 
+  UPDATE_PRODUCT 
+} from '../actions/products';
+import Product from '../../models/product';
 
 const initialState = {
   availableProducts: PRODUCTS,
@@ -13,7 +17,7 @@ export default (state = initialState, action) => {
         const newProduct = new Product 
         (new Date().toString(), 
         'ul',
-        action.prodcutData.title,
+        action.productData.title,
         action.productData.imageUrl,
         action.productData.description,
         action.prodcutData.price

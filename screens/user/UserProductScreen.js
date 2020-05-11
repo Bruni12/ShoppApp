@@ -12,7 +12,7 @@ const UserProductsScreen = props => {
   const userProducts = useSelector(state => state.products.userProducts);
   const dispatch = useDispatch();
 
-  const editProductHandler = (id) => {
+  const editProductHandler = id => {
       props.navigatiion.navigate ('EditProduct', { productId: id });
   };
 
@@ -29,9 +29,13 @@ const UserProductsScreen = props => {
             editProductHandler(itemData.item.id);
           }}
         >
-          <Button color={Colors.primary} title="Edit" onPress={() => {
+          <Button color=
+            {Colors.primary}
+            title="Edit"
+            onPress={() => {
               editProductHandler(itemData.item.id);
-          }} />
+           }} 
+          />
           <Button
             color={Colors.primary}
             title="Delete"
@@ -59,7 +63,7 @@ UserProductsScreen.navigationOptions = navData => {
         />
       </HeaderButtons>
     ),
-    headerRight:  (
+    headerRight: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="Add"
@@ -67,8 +71,8 @@ UserProductsScreen.navigationOptions = navData => {
           onPress={() => {
             navData.navigation.navigate('EditProduct');
           }}
-      />
-    </HeaderButtons>
+       />
+     </HeaderButtons>
     )
   };
 };
